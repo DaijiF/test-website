@@ -2,12 +2,54 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>自己紹介ページ</title>
+    <title>京都の精神科医療の歴史クイズ</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>こんにちは！私はDaijiです</h1>
-    <p>趣味：ランニング、読書、水泳、料理</p>
-    <p>このページはGitHub Pagesで公開しています。</p>
+    <h1>京都の精神科医療の歴史クイズ</h1>
+
+    <section id="history">
+        <h2>京都の精神科医療の歴史</h2>
+        <p>
+            京都には江戸時代から精神科医療の歴史があります。明治時代には〇〇病院が設立され、
+            その後も精神科医療の研究と実践が続けられてきました。戦後には精神保健法が制定され、
+            地域医療の整備が進められました。
+        </p>
+        <p>（ここにさらに具体的な歴史や病院名、著名な医師の情報を追加可能です）</p>
+    </section>
+
+    <section id="quiz">
+        <h2>クイズ：京都の精神科医療について</h2>
+        <p>明治時代に京都で設立された精神科病院は次のうちどれでしょう？</p>
+        <form id="quizForm">
+            <input type="radio" name="answer" value="A" id="a"><label for="a">A. 京都病院</label><br>
+            <input type="radio" name="answer" value="B" id="b"><label for="b">B. 精神病院X</label><br>
+            <input type="radio" name="answer" value="C" id="c"><label for="c">C. 京都精神科病院</label><br><br>
+            <button type="button" onclick="checkAnswer()">回答</button>
+        </form>
+        <p id="result"></p>
+    </section>
+
+    <script>
+        function checkAnswer() {
+            const answers = document.getElementsByName('answer');
+            let selected = null;
+            for (const ans of answers) {
+                if (ans.checked) selected = ans.value;
+            }
+
+            const result = document.getElementById('result');
+            if (!selected) {
+                result.textContent = "まず答えを選んでください。";
+                return;
+            }
+
+            if (selected === "C") {
+                result.textContent = "正解です！明治時代に京都精神科病院が設立されました。";
+            } else {
+                result.textContent = "不正解です。正解は C. 京都精神科病院 です。";
+            }
+        }
+    </script>
 </body>
 </html>
